@@ -17,12 +17,24 @@ public class TestBase {
         wd = new ChromeDriver();
         wd.manage().window().maximize();
         wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);// не явное ожидание в течение 10 сек ждет отрисовки элементов
-        wd.navigate().to("https://contacts-app.tobbymarshall815.vercel.app/");
+        wd.navigate().to("https://trello.com/");
     }
 
     @AfterMethod
     public void tearDown() {
+
         wd.quit();
+    }
+
+//    public boolean isElementPresent(By locator)
+//    {
+//        return wd.findElements(locator).size()>0;
+//    }
+
+    public  void click(By locator)
+    {
+        wd.findElement(locator).click();
+
     }
     public void type(By locator, String text) {
         if (text != null) {
@@ -31,14 +43,6 @@ public class TestBase {
             element.clear();
             element.sendKeys(text);
         }
-    }
-    public void clickE(By locator) {
-        wd.findElement(locator).click();
-    }
-
-    public boolean isElementPresent(By locator)
-    {
-        return wd.findElements(locator).size()>0;
     }
 
 }
